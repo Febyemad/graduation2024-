@@ -1,0 +1,804 @@
+:root {
+    --primary-color: #E63946; /* أحمر دافئ */
+    --secondary-color: #1D1D1D; /* أسود قاتم */
+    --background-color: #000000; /* أسود */
+    --text-color: #fbf3f3; /* فضي */
+    --accent-color: #FFD700; /* ذهبي */
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.main-header {
+    background: linear-gradient(to right, #E63946, #1D1D1D); /* تدرج أحمر دافئ وأسود قاتم */
+    color: var(--text-color);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary-color); /* إضافة خط أسفل الهيدر */
+}
+
+nav {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    padding-right: 10px;
+    padding-left: 0px;
+    background-color: var(--secondary-color); /* أسود قاتم */
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 3px solid var(--primary-color); /* إضافة خط أسفل الشريط */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل للشريط */
+    animation: navAnimation 1s ease-out;
+    z-index: 10; /* التأكد من أن الشريط فوق جميع المحتويات */
+}
+
+@keyframes navAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 4rem; /* حجم خط أكبر */
+    font-weight: bold;
+    color: var(--text-color);
+    position: relative;
+ /* تأثير حركة للوجو */
+    font-family: 'Arial', sans-serif;
+    
+    text-transform: uppercase;
+    animation: textGlow 3s infinite, textWave 2s infinite;
+
+}
+
+.logo::before {
+    content: url; /* استبدل برابط صورة القبعة الخاصة بك */
+    position: absolute;
+    top: -20px; /* تعديل حسب الحاجة */
+    right: -20px; /* تعديل حسب الحاجة */
+    width: 5px; /* حجم القبعة */
+    height: 5px;
+    animation: capAnimation 1s ease-in-out infinite; /* تأثير حركة القبعة */
+}
+@keyframes textGlow {
+    0% { text-shadow: 0 0 5px var(--secondary-bg-color) }
+    50% { text-shadow: 0 0 10px #d82828, 0 0 15px #66ccff; }
+    100% { text-shadow: 0 0 5px #e02a2a; }
+}
+
+@keyframes textWave {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-left: 30px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.6rem; /* حجم خط أكبر */
+    padding: 12px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.header-content {
+    z-index: 1;
+}
+
+.header-content h1 {
+    font-size: 6rem; /* حجم خط أكبر */
+    margin-bottom: 20px;
+    color: var(--text-color);
+    animation: fadeInUp 1s ease-out;
+}
+
+.header-content p {
+    font-size: 2.5rem; /* حجم خط أكبر */
+    margin-bottom: 30px;
+    color: var(--text-color);
+    animation: fadeInUp 1s ease-out 0.5s;
+}
+
+.cta-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 20px 40px;
+    text-decoration: none;
+    font-size: 1.8rem; /* حجم خط أكبر */
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 1s ease-out 1s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل للزر */
+}
+
+.cta-btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .header-content h1 {
+        font-size: 24px;
+    }
+
+    .header-content p {
+        font-size: 14px;
+    }
+
+    .cta-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+
+/* قسم لحظات لا تُنسى */
+.moments-section {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(to right, #FF0000, #000000); /* تدرج أحمر وأسود */
+    color: var(--text-color);
+}
+
+.moments-gallery {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.moment-image {
+    width: 30%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease-out;
+}
+
+.moment-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* special -offer start*/
+
+
+/* special -offer start*/
+
+.special-offers {
+    position: relative;
+    perspective: 1000px; /* Create a 3D space */
+    height: 500px; 
+    overflow: hidden;
+    background: var(--secondary-bg-color); 
+}
+
+.section-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+    animation: rotateAround 20s linear infinite; /* Infinite rotation */
+}
+
+
+.special -products h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #00796b; /* Main color of your site */
+    font-weight: bold;
+}
+
+
+.section-item {
+    position: absolute;
+    width: 300px; 
+    height: 400px;
+    transition: opacity 0.6s ease, transform 0.6s ease, background-color 0.9s ease;
+    opacity: 0;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    animation: fadeIn 1s ease-out forwards;
+    background-color: var(--secondary-bg-color);
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(99, 160, 218, 0.1); /* Subtle shadow */
+}
+
+/* Hover effect */
+.section-item:hover {
+    background-color: var(--active-bg-color); /* Change to hover color */
+}
+
+/* Click effect: Change color and simulate a click */
+.section-item:active {
+    background-color: var(--active-bg-color); 
+}
+
+/* Position items in a circular path */
+.special-offers .section-item {
+    opacity: 1; /* Ensure items are visible */
+}
+
+.special-offers .section-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(300px); /* Adjust translateZ value to control distance from center */
+}
+
+.special-offers .section-item:nth-child(2) {
+    transform: rotateY(60deg) translateZ(300px);
+}
+
+.special-offers .section-item:nth-child(3) {
+    transform: rotateY(120deg) translateZ(300px);
+}
+
+.special-offers .section-item:nth-child(4) {
+    transform: rotateY(180deg) translateZ(300px);
+}
+
+.special-offers .section-item:nth-child(5) {
+    transform: rotateY(240deg) translateZ(300px);
+}
+
+.special-offers .section-item:nth-child(6) {
+    transform: rotateY(300deg) translateZ(300px);
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframes for rotating carousel effect */
+@keyframes rotateAround {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+
+
+/* قسم معرض الصور */
+/* قسم معرض الصور */
+.gallery-section {
+    padding: 60px 20px;
+    background: linear-gradient(to right, #FF0000, #000000);
+    color: var(--text-color);
+    text-align: center;
+    position: relative;
+}
+
+.gallery-section h2 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-slider {
+    position: relative;
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    height: 650px; /* ارتفاع ثابت للصور */
+}
+
+.gallery-slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+}
+
+/* تأثيرات التبديل التلقائي بين الصور */
+@keyframes slideAnimation {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 1; }
+    30% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.gallery-slide:nth-child(1) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 0s;
+}
+
+.gallery-slide:nth-child(2) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 5s;
+}
+
+.gallery-slide:nth-child(3) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 10s;
+}
+
+.gallery-slide:nth-child(4) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 15s;
+}
+
+.gallery-slide:nth-child(5) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 20s;
+}
+
+.gallery-slide:nth-child(6) {
+    animation: slideAnimation 20s infinite;
+    animation-delay: 25s;
+}
+
+/* قسم الفريق */
+.team-section {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(to right, #FF0000, #000000); /* تدرج أحمر وأسود */
+    color: var(--text-color);
+}
+
+.team-gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    width: 200px;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    margin: 10px;
+}
+
+.team-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.team-image:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.main-header {
+    background-color: #e84a5f;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+.members-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.members-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.member-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    height: 400px;
+    position: relative;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeIn 1s forwards, rotateIn 2s linear infinite, pulse 2s infinite;
+}
+
+.member-card:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.member-photo {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+
+.member-card:hover .member-photo {
+    transform: scale(1.1) rotate(-2deg);
+    filter: brightness(1.2);
+}
+
+.member-info {
+    padding: 15px;
+    animation: fadeInText 1s ease-out;
+}
+
+.member-card h3 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #e84a5f;
+}
+.member-card h2 {
+    font-size: 1em;
+    margin: 10px 0;
+    color: var(--accent-color);
+}
+.member-card p {
+    margin: 5px 0;
+    color: #333;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+:root {
+    --primary-color: #E63946; /* أحمر دافئ */
+    --secondary-color: #1D1D1D; /* أسود قاتم */
+    --background-color: #3D0A0A; /* أحمر داكن */
+    --text-color: #C0C0C0; /* فضي */
+    --accent-color: #FFD700; /* ذهبي */
+    --hover-scale: 1.1;
+    --rotation-angle: 15deg;
+    --hover-translate: 5px;
+    --glow-color: rgba(255, 215, 0, 0.5);
+}
+
+/* الحركات العامة */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes textAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-var(--rotation-angle));
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0);
+        opacity: 1;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px var(--glow-color);
+    }
+    50% {
+        text-shadow: 0 0 15px var(--glow-color);
+    }
+    100% {
+        text-shadow: 0 0 5px var(--glow-color);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* الرأس */
+.main-header {
+    background: linear-gradient(135deg, #E63946, #3D0A0A);
+    color: var(--text-color);
+    text-align: center;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--primary-color);
+}
+
+.animated-header {
+    font-size: 40px;
+    color: var(--accent-color);
+    animation: bounceIn 2s ease-out, rotateIn 3s ease-out infinite alternate, pulse 2s infinite;
+}
+
+.animated-subtitle {
+    font-size: 20px;
+    animation: fadeInUp 2s ease-out, glow 3s ease-in-out infinite;
+}
+
+/* قسم المعلمين */
+.teacher-section {
+    padding: 50px 20px;
+    background-color: var(--background-color);
+    text-align: center;
+    position: relative;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: var(--primary-color);
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.teacher-memories-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* البطاقات */
+.teacher-card {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    width: 300px;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fadeInUp 65s ease forwards, rotateIn 60s ease-in-out, pulse 62s infinite;
+    animation-delay: calc(60s * var(--i)); /* تأخير الأنيميشن لكل بطاقة */
+}
+
+.teacher-card:hover {
+    transform: scale(var(--hover-scale)) translateY(-var(--hover-translate)) rotate(var(--rotation-angle));
+    box-shadow: 0 8px 16px var(--glow-color);
+    filter: brightness(1.1);
+}
+
+.teacher-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--accent-color);
+    animation: slideIn 1s ease-out,  5s linear infinite;
+}
+
+.teacher-text {
+    padding: 20px;
+    
+}
+
+.teacher-text h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 30px;
+    animation: textAppear 2s ease-out, pulse 2s infinite;
+}
+
+.teacher-text p {
+    margin-top: 10px;
+    color: aliceblue;
+    font-size: 16px;
+    
+    text-shadow: #FFD700;
+    line-height: 1.6;
+    animation: textAppear 2s ease-in-out, pulse 62s infinite;
+}
